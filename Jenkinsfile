@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-				sh 'cd Tomcat && mvn clean compile'			
+				sh 'cd Tomcat && mvn clean emma:emma compile'			
             }
         }
         stage('Test'){
