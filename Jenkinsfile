@@ -33,6 +33,19 @@ pipeline {
 									
 				sh 'cd Tomcat && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"'           
 				checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
+
+				sh 'cd Tomcat && mvn emma:emma'
+				junit 'Tomcat/target/surefire-reports/*.xml'
+				post {
+            			success {
+                            publishHTML target: [
+                			 allowMissing: false,
+                			 alwaysLinkToLastBuild: false,
+                			 keepAll: true,
+                			 reportDir: 'Tomcat/target/site/emma',
+                			reportFiles: 'index.html',
+                			reportName: 'Emma Report',
+]
 			}
         }
         stage('Deploy') {
