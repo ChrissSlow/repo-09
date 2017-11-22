@@ -114,11 +114,11 @@
   - Parent-Container = Host
   - Child-Container = Wrapper
 
----  
+
 **NOTE: Engines and hosts aren’t generally used when a Catalina is deployed which is connected to a
 Webserver like Apache because the connector then utilizes the webserver’s facilities to determine the
 proper context for processing the request.**
----
+
 
 #### Wrapper (org.apache.catalina.core):
 - Individual servlet definition
