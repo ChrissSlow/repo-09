@@ -33,8 +33,10 @@ pipeline {
                 step([$class: 'FindBugsPublisher', pattern: 'Tomcat/target/findbugsXml.xml'])
 			}
         }
-        stage('Deploy') {			
-			sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar '
-        }
+        stage('Deploy') {
+			steps{
+				sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar ~/home/jenkinsDeployment'
+			}
+		}
     }
 }
