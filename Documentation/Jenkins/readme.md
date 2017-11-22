@@ -38,7 +38,7 @@ When first loging in to Jenkins you used the initial password found in jenkins.l
 In Jenkins:
 1. Go to “Manage Jenkins” > “Manage Users”
 
-![Manage Users](./images/01_manage_jenkins.png)
+![Manage Jenkins](./images/01_manage_jenkins.png)
 
 ![Manage Users](./images/02_manage_users.png)
 
@@ -79,13 +79,13 @@ Got to “Manage Jenkins” > “Global Tool Configuration”
 In Jenkins:
 Got to “Manage Jenkins” > “Configure System”
 
-![Configure System](./images/09_configure_system.png)
+![Configure System](./images/10_configure_system.png)
 
 1. Scroll down to section “GitHub” and click “Add GitHub Server”
 2. Enter a Name and add credentials
    1. Make sure to set “Kind“ to ”Secret” Text. Here you should paste a token which you can generate here: https://github.com/settings/tokens into the field “Secret”
    
-   ![GitHub Server](./images/10_configure_github.png)
+   ![GitHub Server](./images/09_configure_github.png)
    
 3. Click “Apply” and “Save”
 
@@ -93,7 +93,7 @@ Got to “Manage Jenkins” > “Configure System”
 
 1. Go to “New Item”
 
-![New Item](.images/11_new_item.png)
+![New Item](./images/11_new_item.png)
 
 2. Click on “Pipeline”, enter a pipeline name and click on “OK”
 
