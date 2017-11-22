@@ -28,7 +28,7 @@ pipeline {
         }
 		stage('Reports') {                         
 			steps {
-				sh 'cd Tomcat && mvn findbugs:findbugs checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/tomcat/apache-tomcat-6.0.53-src/checkstyle.xml"'           
+				sh 'cd Tomcat && mvn findbugs:findbugs checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"'           
                 findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'Tomcat/target/findbugsXml.xml', unHealthy: ''
 
 checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: 'Tomcat/target/checkstyle.xml', unHealthy: ''
