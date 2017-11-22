@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Deploy') {
 			steps{
-				sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar ~/home/jenkinsDeployment'
+				sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar /var/lib/jenkins/TomcatJars'
 			}
 		}
     }
