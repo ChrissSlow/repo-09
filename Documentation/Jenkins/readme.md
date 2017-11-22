@@ -115,15 +115,37 @@ Got to “Manage Jenkins” > “Configure System”
 
 ## Adding Plugins for FindBugs, Checkstyle and Emma
 
+#### What is FindBugs?
+
+This is what Wikipedia has to say about FindBugs ([Website](http://findbugs.sourceforge.net/)):
+
+>"FindBugs is an open source static code analyser created by Bill Pugh and David Hovemeyer which detects possible bugs in Java programs. The analyzer got itself a successor: SpotBugs. Potential errors are classified in four ranks: (i) scariest, (ii) scary, (iii) troubling and (iv) of concern. "[Wikipedia](https://en.wikipedia.org/wiki/FindBugs, 22.11.2017 10:14 PM]
+
+
+#### What is Checkstyle?
+
+This is what the official [Website](http://checkstyle.sourceforge.net/) for Checkstyle says:
+
+>"Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. It automates the process of checking Java code to spare humans of this boring (but important) task. This makes it ideal for projects that want to enforce a coding standard."[Checkstyle.sourceforge.net](http://checkstyle.sourceforge.net/), 22.11.2017 10:07 PM, Section "Overview"]
+
+#### What is Emma?
+
+This is what the official [Website](http://emma.sourceforge.net/) for Emma says:
+
+>"EMMA is an open-source toolkit for measuring and reporting Java code coverage. EMMA distinguishes itself from other tools by going after a unique feature combination: support for large-scale enterprise software development while keeping individual developer's work fast and iterative."[emma.sourceforge.net](http://emma.sourceforge.net/), 22.11.2017 10:10 PM, Section "Code coverage for free: a basic freedom?"]
+
+
 Go to "Manage Jenkins" > "Manage Plugins"
 
 ![Manage Plugins](./images/16_manage_plugins.png)
 
-1. Click on the "Available" Tab and type in the names of the Three plugins: "FindBugs Plugin", "CheckStyle Plugin" and "Emma Plugin". Select the checkboxes of the plugins and click "Download now and install after restart".
+1. Click on the "Available" Tab and type in the names of the Three plugins: [FindBugs Plug-in](https://wiki.jenkins.io/display/JENKINS/FindBugs+Plugin), [Checkstyle Plug-in](https://wiki.jenkins.io/display/JENKINS/Checkstyle+Plugin) and [Emma plugin](https://wiki.jenkins.io/display/JENKINS/Emma+Plugin). Select the checkboxes of the plugins and click "Download now and install after restart".
 
 ![Manage Plugins](./images/17_search_plugins.png)
 
 2. **In the Tomcat sourcefolder:** add the following plugins inside the tags for "report" > "plugins"
+
+![Adding Plugins](./images/18_add_plugins.png)
 
 ## Creating Jenkinsfile for Tomcat 6.0.53
 
@@ -133,7 +155,7 @@ In the GitHub-Repository:
 1. Create Jenkinsfile
 2. Use the following structure:
 
-![]()
+![Jenkinsfile](./images/19_jenkinsfile.png)
 
 “pipeline” - All valid Declarative Pipelines must be enclosed within a “pipeline” block.
 
@@ -150,7 +172,7 @@ In the GitHub-Repository:
 “post” - Defines action which will be run at the end of the Pipeline run or stage
 
 This Jenkinsfile is devided into four stages: "Build", "Test", "Reports" and "Deploy". When executing the pipeline Jenkins runs through all these four stages sequetially.
-During the building stage we tell Jenkins to first compile and then build the code via Maven. Should these steps succeed the created JAR-file will be archived in the "target" folder. In the test stage we tell Jenkins to run the tests via Maven and in the reports stage we let Jenkins run the FindBugs and CheckStyle Plugins. We also make Jenkins publish the reports to the builds main page.
+During the building stage we tell Jenkins to first compile and then build the code via Maven. Should these steps succeed the created JAR-file will be archived in the "target" folder. In the test stage we tell Jenkins to run the tests via Maven. After that and in the reports stage we let Jenkins run the FindBugs and CheckStyle Plugins. We also make Jenkins publish the reports to the builds main page.
 The last stage is for deploying the created JAR-File to a specific location. In our example it's a folder "TomcatJars" which we created in the working directory of Jenkins under Linux (/var/lib/jenkins/).
  
 
@@ -159,6 +181,6 @@ If the Jenkins Job was configured correctly you should witness the first build. 
 success of your builds on the dashboard (starting page) or by clicking on the builds you would like to
 have a closer look at.
 
-![]()
+![Dashboard](./images/.png)
 
-![]()
+![Pipeline View](./images/.png)
