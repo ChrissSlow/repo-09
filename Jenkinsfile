@@ -28,10 +28,12 @@ pipeline {
         }
 		stage('Reports') {                         
 			steps {
-				sh 'cd Tomcat && mvn findbugs:findbugs checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"'           
-                findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'Tomcat/target/findbugsXml.xml', unHealthy: ''
-
-checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: 'Tomcat/target/checkstyle.xml', unHealthy: ''
+				sh 'cd Tomcat && mvn findbugs:findbugs'           
+				findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'Tomcat/target/findbugsXml.xml', unHealthy: ''
+                step([$class: 'FindBugsPublisher', pattern: 'Tomcat/target/findbugsXml.xml', unstableTotalAll:'2000'])
+									
+				sh 'cd Tomcat && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"'           
+				checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: 'Tomcat/target/checkstyle.xml', unHealthy: ''
 			}
         }
         stage('Deploy') {
