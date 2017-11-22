@@ -27,7 +27,7 @@ pipeline {
             }		
 			post {
            		success {
-                    sh 'cd tomcat && mvn emma:emma'
+                    sh 'cd Tomcat && mvn emma:emma'
 					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'tomcat/target/site/emma', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report', reportTitles: ''])
 				}
 			}

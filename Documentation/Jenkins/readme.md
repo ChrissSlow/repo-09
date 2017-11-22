@@ -119,20 +119,20 @@ Got to “Manage Jenkins” > “Configure System”
 
 This is what Wikipedia has to say about FindBugs ([Website](http://findbugs.sourceforge.net/)):
 
->"FindBugs is an open source static code analyser created by Bill Pugh and David Hovemeyer which detects possible bugs in Java programs. The analyzer got itself a successor: SpotBugs. Potential errors are classified in four ranks: (i) scariest, (ii) scary, (iii) troubling and (iv) of concern. "[Wikipedia](https://en.wikipedia.org/wiki/FindBugs, 22.11.2017 10:14 PM]
+>"FindBugs is an open source static code analyser created by Bill Pugh and David Hovemeyer which detects possible bugs in Java programs. The analyzer got itself a successor: SpotBugs. Potential errors are classified in four ranks: (i) scariest, (ii) scary, (iii) troubling and (iv) of concern. "[[Wikipedia](https://en.wikipedia.org/wiki/FindBugs), 22.11.2017 10:14 PM]
 
 
 #### What is Checkstyle?
 
 This is what the official [Website](http://checkstyle.sourceforge.net/) for Checkstyle says:
 
->"Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. It automates the process of checking Java code to spare humans of this boring (but important) task. This makes it ideal for projects that want to enforce a coding standard."[Checkstyle.sourceforge.net](http://checkstyle.sourceforge.net/), 22.11.2017 10:07 PM, Section "Overview"]
+>"Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. It automates the process of checking Java code to spare humans of this boring (but important) task. This makes it ideal for projects that want to enforce a coding standard."[[Checkstyle.sourceforge.net](http://checkstyle.sourceforge.net/), 22.11.2017 10:07 PM, Section "Overview"]
 
 #### What is Emma?
 
 This is what the official [Website](http://emma.sourceforge.net/) for Emma says:
 
->"EMMA is an open-source toolkit for measuring and reporting Java code coverage. EMMA distinguishes itself from other tools by going after a unique feature combination: support for large-scale enterprise software development while keeping individual developer's work fast and iterative."[emma.sourceforge.net](http://emma.sourceforge.net/), 22.11.2017 10:10 PM, Section "Code coverage for free: a basic freedom?"]
+>"EMMA is an open-source toolkit for measuring and reporting Java code coverage. EMMA distinguishes itself from other tools by going after a unique feature combination: support for large-scale enterprise software development while keeping individual developer's work fast and iterative."[[emma.sourceforge.net](http://emma.sourceforge.net/), 22.11.2017 10:10 PM, Section "Code coverage for free: a basic freedom?"]
 
 
 Go to "Manage Jenkins" > "Manage Plugins"
