@@ -162,10 +162,10 @@ proper context for processing the request.**
 ## Generated package structure
 ![Packages Overview](./images/architecture_01.png)
 
-**NOTE: Blue packages are important**
-
 ## Architecture Overview
 ![Architecture Overview](./images/architecture_02.png)
+
+**NOTE: Blue packages are important**
 
 ## Misc
 [Server Startup](serverStartup.pdf)
