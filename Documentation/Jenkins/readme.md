@@ -47,6 +47,8 @@ In Jenkins:
 
 ![Manage Jenkins](./images/01_manage_jenkins.png)
 
+---
+
 ![Manage Users](./images/02_manage_users.png)
 
 2. Fill in the input fields
@@ -54,7 +56,11 @@ In Jenkins:
 
 ![Create User](./images/03_create_user.png)
 
+---
+
 ![Input User](./images/04_create_user_input.png)
+
+---
 
 ## Configure Maven-Tool and JDK
 
@@ -67,19 +73,21 @@ Got to **Manage Jenkins** > **Global Tool Configuration**
 
 **Maven**
    1. Scroll down to the section for Maven
-   2. Add Maven
+   2. Click **Add Maven**
    3. Type in name for Maven tool and select **Install automatically** and version.
    4. Click **Apply** and **Save**
    
-   ![Maven](./images/07_maven_tool.png)
+![Maven](./images/07_maven_tool.png)
    
 **JDK**
    1. Scroll down to the section for JDK
-   2. Add JDK
+   2. Click **Add JDK**
    3. Type in name for JDK and select **Install automatically** and version.
    4. Click **Apply** and **Save**
    
-   ![JDK](./images/06_jdk_tool.png)
+![JDK](./images/06_jdk_tool.png)
+   
+---
 
 ## Configuring GitHub for Jenkins
 
@@ -92,7 +100,7 @@ Got to **Manage Jenkins** > **Configure System**
 2. Enter a Name and add credentials
    1. Make sure to set **Kind** to **Secret Text**. Here you should paste a token, which you can generate [here](https://github.com/settings/tokens), into the field “Secret”
    
-   ![GitHub Server](./images/09_configure_github.png)
+![GitHub Server](./images/09_configure_github.png)
    
 3. Click **Apply** and **Save**
 
@@ -129,7 +137,6 @@ This is what Wikipedia has to say about FindBugs ([Website](http://findbugs.sour
 
 >"FindBugs is an open source static code analyser created by Bill Pugh and David Hovemeyer which detects possible bugs in Java programs. The analyzer got itself a successor: SpotBugs. Potential errors are classified in four ranks: (i) scariest, (ii) scary, (iii) troubling and (iv) of concern. "[[Wikipedia](https://en.wikipedia.org/wiki/FindBugs), 22.11.2017 10:14 PM]
 
-
 #### What is Checkstyle?
 
 This is what the official [Website](http://checkstyle.sourceforge.net/) for Checkstyle says:
@@ -141,7 +148,6 @@ This is what the official [Website](http://checkstyle.sourceforge.net/) for Chec
 This is what the official [Website](http://emma.sourceforge.net/) for Emma says:
 
 >"EMMA is an open-source toolkit for measuring and reporting Java code coverage. EMMA distinguishes itself from other tools by going after a unique feature combination: support for large-scale enterprise software development while keeping individual developer's work fast and iterative."[[emma.sourceforge.net](http://emma.sourceforge.net/), 22.11.2017 10:10 PM, Section "Code coverage for free: a basic freedom?"]
-
 
 Go to **Manage Jenkins** > **Manage Plugins**
 
@@ -184,7 +190,6 @@ In the GitHub-Repository:
 This Jenkinsfile is devided into four stages: "Build", "Test", "Reports" and "Deploy". When executing the pipeline Jenkins runs through all these four stages sequetially.
 During the building stage we tell Jenkins to first compile and then build the code via Maven. Should these steps succeed the created JAR-file will be archived in the "target" folder. In the test stage we tell Jenkins to run the tests via Maven. After that Emma is run. Emma checks the code coverage during test stage. In the reports stage we let Jenkins run the FindBugs and CheckStyle Plugins. We also make Jenkins publish the reports to the builds main page.
 The last stage is for deploying the created JAR-File to a specific location. In our example it's a folder "TomcatJars" which we created in the working directory of Jenkins under Linux (/var/lib/jenkins/).
- 
 
 ## Building a Jenkins Job
 
@@ -193,6 +198,10 @@ Besides the status of the different stages you can see the results from FindBugs
 
 ![Dashboard](./images/20_dashboard.png)
 
+---
+
 ![Pipeline Diagrams](./images/.png)
+
+---
 
 ![Pipeline Stages](./images/.png)
