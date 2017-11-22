@@ -7,25 +7,32 @@ The Maven Pipeline pulls a repository, which contains a Tomcat-Server vers. 6.0.
 
 The following instructions are based on this site: https://pkg.jenkins.io/debian-stable/
 
-1. To use the Debian package repository of Jenkins add it’s key to the system by executing the following command via the terminal: 
+1. To use the Debian package repository for Jenkins add it’s key to the system by executing the following command via the terminal: 
 ```shell
 wget -q -O https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 ```
 2. Add the following line to the file “sources.list” which can be found in /etc/apt/: 
->deb https://pkg.jenkins.io/debian-stable binary/
-3. Run the command “sudo apt-get update” and then the command “sudo apt-get install jenkins” (in that order)
 
-You should be able to access Jenkins in a web browser now. By typing in:
+>deb https://pkg.jenkins.io/debian-stable binary/
+
+3. Run these commands from the terminal(in this order):
+
+```shell
+sudo apt-get update
+sudo apt-get install jenkins
+```
+
+You should be able to access Jenkins in a web browser now by typing in:
 
 > http://localhost:8080
 
-Alternatively use the IP-Address and port of the server e.g.:
+Alternatively you can use the IP-Address and port of the server e.g.:
 
 > http://141.19.142.63:8080
 
 ## Getting started
 
-When starting up Jenkins for the first time you will be prompted to enter the initial password. After this you can select the plugins that you want to install.
+When starting up Jenkins for the first time you will be prompted to enter the initial password. After this you either choose to install the standard plugins or you can select the plugins you want to install.
 
 1. On your system navigate to /var/log/jenkins/ and copy the initial password from jenkins.log
 2. Paste the password into the field in the web browser
@@ -33,17 +40,17 @@ When starting up Jenkins for the first time you will be prompted to enter the in
 
 ## Creating A User
 
-When first loging in to Jenkins you used the initial password found in jenkins.log. To avoid having to type in the same long password again the next time you login, you should create another user.
+When first loging in to Jenkins you used the initial password found in jenkins.log. To avoid having to type in the same long password over and over again, everytime you log back in, you should create another user.
 
 In Jenkins:
-1. Go to “Manage Jenkins” > “Manage Users”
+1. Go to **Manage Jenkins** > **Manage Users**
 
 ![Manage Jenkins](./images/01_manage_jenkins.png)
 
 ![Manage Users](./images/02_manage_users.png)
 
 2. Fill in the input fields
-3. Click “Create User”
+3. Click **Create User**
 
 ![Create User](./images/03_create_user.png)
 
@@ -51,67 +58,68 @@ In Jenkins:
 
 ## Configure Maven-Tool and JDK
 
-Maven does not come with Jenkins by default. **Note that the following steps are not the only solution.**
+Maven does not come with Jenkins by default. Note that the following steps are not the only solution.
 
 In Jenkins:
-Got to “Manage Jenkins” > “Global Tool Configuration”
+Got to **Manage Jenkins** > **Global Tool Configuration**
 
 ![Configure Tool](./images/05_tool_configuration.png)
 
-1. Maven
-   1. Scroll down to section “Maven”
-   2. Click on “Add Maven”
-   3. Type in name for Maven tool and select “Install automatically” and version.
-   4. Click “Apply” and “Save”
+**Maven**
+   1. Scroll down to the section for Maven
+   2. Add Maven
+   3. Type in name for Maven tool and select **Install automatically** and version.
+   4. Click **Apply** and **Save**
    
    ![Maven](./images/07_maven_tool.png)
    
-2. JDK
-   1. Scroll down to section “JDK”
-   2. Click on “Add JDK”
-   3. Type in name for JDK and select “Install automatically” and version.
-   4. Click “Apply” and “Save”
+**JDK**
+   1. Scroll down to the section for JDK
+   2. Add JDK
+   3. Type in name for JDK and select **Install automatically** and version.
+   4. Click **Apply** and **Save**
    
    ![JDK](./images/06_jdk_tool.png)
 
 ## Configuring GitHub for Jenkins
 
 In Jenkins:
-Got to “Manage Jenkins” > “Configure System”
+Got to **Manage Jenkins** > **Configure System**
 
 ![Configure System](./images/10_configure_system.png)
 
-1. Scroll down to section “GitHub” and click “Add GitHub Server”
+1. Scroll down to section **GitHub** and click **Add GitHub Server**
 2. Enter a Name and add credentials
-   1. Make sure to set “Kind“ to ”Secret” Text. Here you should paste a token which you can generate here: https://github.com/settings/tokens into the field “Secret”
+   1. Make sure to set **Kind** to **Secret Text**. Here you should paste a token, which you can generate [here](https://github.com/settings/tokens), into the field “Secret”
    
    ![GitHub Server](./images/09_configure_github.png)
    
-3. Click “Apply” and “Save”
+3. Click **Apply** and **Save**
 
 ## Creating a Jenkins Pipeline for Tomcat 6.0.53 via Maven
 
-1. Go to “New Item”
+In Jenkins:
+1. Go to **New Item**
 
 ![New Item](./images/11_new_item.png)
 
-2. Click on “Pipeline”, enter a pipeline name and click on “OK”
+2. Click on **Pipeline**, enter a pipeline name and click **OK**
 
 ![Pipeline Selection](./images/12_select_pipeline.png)
 
-3. Enter a Description and set the maximum amount of builds, which should be kept. This should be done in order to not waste memory
+3. Enter a Description and set the maximum amount of builds, which should be kept. This should be done if you don't want your memory fill up very fast.
 
 ![Pipeline Description and Maximum Build Amount](./images/13_description_name.png)
 
-4. Check the box for "GitHub Project", enter URL of the repository. Under Build Triggers check "GitHub hook trigger for GITScm polling" and "Poll SCM" and enter "*/5 * * * *" in the text-area "Schedule"
+4. Check the box for **GitHub Project**, enter URL for the repository. Under Build Triggers check **GitHub hook trigger for GITScm polling** and **Poll SCM** and enter "*/5 * * * *" in the text-area for the schedule
 
 ![GitHub Poll](./images/14_github_poll.png)
 
-5. Under "Pipeline" chose the definition "Pipeline script from SCM" and make sure "SCM" is set to "Git". Enter the Repository-URL and specify the branch.
+5. Under **Pipeline** chose the definition **Pipeline script from SCM** and make sure **SCM** is set to **Git**. Enter the URL for the repository and specify the branch.
 
 ![Pipeline Configuration](./images/15_pipeline_config.png)
 
-6. Click “Apply” and “Save”
+6. Click **Apply** and **Save**
 
 ## Adding Plugins for FindBugs, Checkstyle and Emma
 
@@ -135,17 +143,19 @@ This is what the official [Website](http://emma.sourceforge.net/) for Emma says:
 >"EMMA is an open-source toolkit for measuring and reporting Java code coverage. EMMA distinguishes itself from other tools by going after a unique feature combination: support for large-scale enterprise software development while keeping individual developer's work fast and iterative."[[emma.sourceforge.net](http://emma.sourceforge.net/), 22.11.2017 10:10 PM, Section "Code coverage for free: a basic freedom?"]
 
 
-Go to "Manage Jenkins" > "Manage Plugins"
+Go to **Manage Jenkins** > **Manage Plugins**
 
 ![Manage Plugins](./images/16_manage_plugins.png)
 
-1. Click on the "Available" Tab and type in the names of the Three plugins: [FindBugs Plug-in](https://wiki.jenkins.io/display/JENKINS/FindBugs+Plugin), [Checkstyle Plug-in](https://wiki.jenkins.io/display/JENKINS/Checkstyle+Plugin) and [Emma plugin](https://wiki.jenkins.io/display/JENKINS/Emma+Plugin). Select the checkboxes of the plugins and click "Download now and install after restart".
+1. Click on the Tab for available Plugins and type in the names of the Three plugins: [FindBugs Plug-in](https://wiki.jenkins.io/display/JENKINS/FindBugs+Plugin), [Checkstyle Plug-in](https://wiki.jenkins.io/display/JENKINS/Checkstyle+Plugin) and [Emma plugin](https://wiki.jenkins.io/display/JENKINS/Emma+Plugin). Select the checkboxes for the plugins and click **Download now and install after restart**.
 
 ![Manage Plugins](./images/17_search_plugins.png)
 
-2. **In the Tomcat sourcefolder:** add the following plugins inside the tags for "report" > "plugins"
+2. **In the Tomcat sourcefolder:** add the following plugins inside the tags for reports:
 
 ![Adding Plugins](./images/18_add_plugins.png)
+
+3. You should also download the Plugin [Publishing HTML Reports in Pipeline](https://jenkins.io/blog/2016/07/01/html-publisher-plugin/). With it you can publish the reports Emma generates.
 
 ## Creating Jenkinsfile for Tomcat 6.0.53
 
@@ -172,15 +182,17 @@ In the GitHub-Repository:
 “post” - Defines action which will be run at the end of the Pipeline run or stage
 
 This Jenkinsfile is devided into four stages: "Build", "Test", "Reports" and "Deploy". When executing the pipeline Jenkins runs through all these four stages sequetially.
-During the building stage we tell Jenkins to first compile and then build the code via Maven. Should these steps succeed the created JAR-file will be archived in the "target" folder. In the test stage we tell Jenkins to run the tests via Maven. After that and in the reports stage we let Jenkins run the FindBugs and CheckStyle Plugins. We also make Jenkins publish the reports to the builds main page.
+During the building stage we tell Jenkins to first compile and then build the code via Maven. Should these steps succeed the created JAR-file will be archived in the "target" folder. In the test stage we tell Jenkins to run the tests via Maven. After that Emma is run. Emma checks the code coverage during test stage. In the reports stage we let Jenkins run the FindBugs and CheckStyle Plugins. We also make Jenkins publish the reports to the builds main page.
 The last stage is for deploying the created JAR-File to a specific location. In our example it's a folder "TomcatJars" which we created in the working directory of Jenkins under Linux (/var/lib/jenkins/).
  
 
 ## Building a Jenkins Job
-If the Jenkins Job was configured correctly you should witness the first build. You can monitor the
-success of your builds on the dashboard (starting page) or by clicking on the builds you would like to
-have a closer look at.
 
-![Dashboard](./images/.png)
+If the Jenkins Job was configured correctly you should be able to witness the first build. You can monitor the success of your builds on the dashboard (starting page) or by clicking on the builds you would like to have a closer look at them.
+Besides the status of the different stages you can see the results from FindBugs, Checkstyle and Emma.
 
-![Pipeline View](./images/.png)
+![Dashboard](./images/20_dashboard.png)
+
+![Pipeline Diagrams](./images/.png)
+
+![Pipeline Stages](./images/.png)
