@@ -28,9 +28,8 @@ pipeline {
         }
 		stage('Reports') {                         
 			steps {
-                sh 'cd Tomcat && mvn findbugs:findbugs'
-                                   
-                step([$class: 'FindBugsPublisher', pattern: 'Tomcat/target/findbugsXml.xml'])
+				sh 'cd Tomcat && mvn findbugs:findbugs'           
+                findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'Tomcat/target/findbugsXml.xml', unHealthy: ''
 			}
         }
         stage('Deploy') {
