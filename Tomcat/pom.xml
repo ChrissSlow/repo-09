@@ -52,6 +52,15 @@ xsi:schemaLocation="...">
 
 <reporting>
   <plugins>
+	<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-project-info-reports-plugin</artifactId>
+            <version>2.8</version>
+            <configuration>
+                <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+            </configuration>
+        </plugin>
+
         <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -69,6 +78,25 @@ xsi:schemaLocation="...">
 
 
   <build>
+<pluginManagement>
+      <plugins>
+	<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+		<version>2.8</version>
+                <configuration>
+                   <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.17</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
 		 <plugin>
            <groupId>org.codehaus.mojo</groupId>
@@ -80,6 +108,27 @@ xsi:schemaLocation="...">
               <xmlOutput>true</xmlOutput>
            </configuration>
         </plugin>
+
+	<plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-checkstyle-plugin</artifactId>
+ <version>2.17</version>
+   <executions>
+     <execution>
+       <configuration>
+         <encoding>UTF-8</encoding>
+         <consoleOutput>true</consoleOutput>
+         <failsOnError>true</failsOnError>
+         <linkXRef>false</linkXRef>
+	<sourceDirectory>src</sourceDirectory>
+       </configuration>
+       <goals>
+         <goal>check</goal>
+       </goals>
+     </execution>
+   </executions>
+</plugin>
+
 
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
