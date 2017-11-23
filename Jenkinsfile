@@ -42,11 +42,11 @@ pipeline {
            		success {
 					// Run Emma for Tomcat
                     sh 'cd Tomcat && mvn emma:emma'
-					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: '${WORKSPACE}/Tomcat/target/site/emma', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report', reportTitles: ''])
+					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'Tomcat/target/site/emma', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report', reportTitles: ''])
 					
 					// Run Emma for OwnProgram
 					sh 'cd OwnProgram && mvn emma:emma'
-					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: '${WORKSPACE}/OwnProgram/target/site/emma', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report', reportTitles: ''])
+					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'OwnProgram/target/site/emma', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report', reportTitles: ''])
 				}
 			}
         }

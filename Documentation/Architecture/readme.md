@@ -169,7 +169,7 @@ proper context for processing the request.**
 
 ## Processing a Request
 
-You can find the profiled method calls of one http request in the [cpu-live.csv](cpu-live.csv) file.
+You can find the profiled method calls of one http request in the [cpu-live.csv](./files/cpu-live.csv) file.
 It was extraced with the tool *jvisualvm* what you can find in the JDK folder.
 
 ### Extracting classes involved in one http call
@@ -585,5 +585,5 @@ org.apache.catalina.core.ApplicationFilterChain.release()
 ![Rough request process](./images/request.png)
 
 ## Misc
-[Server Startup](serverStartup.pdf)
-[Request Process](requestProcess.pdf)
+[Server Startup](./files/serverStartup.pdf)
+[Request Process](./files/requestProcess.pdf)

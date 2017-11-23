@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="...">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.hs-mannheim.cs.lsd</groupId>
-	<artifactId>lsd_ownprogram</artifactId>
+	<artifactId>lsd-ownprogram</artifactId>
 	<packaging>jar</packaging>
 	<version>oldProgram</version>
 	<name>lsd-ownprogram</name>

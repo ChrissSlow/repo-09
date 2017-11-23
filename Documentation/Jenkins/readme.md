@@ -81,7 +81,7 @@ Got to **Manage Jenkins** > **Global Tool Configuration**
 
 ---
 
-**Maven**
+### Maven
    1. Scroll down to the section for Maven
    2. Click **Add Maven**
    3. Type in name for Maven tool and select **Install automatically** and version.
@@ -93,7 +93,7 @@ Got to **Manage Jenkins** > **Global Tool Configuration**
 
 ---
    
-**JDK**
+### JDK
    1. Scroll down to the section for JDK
    2. Click **Add JDK**
    3. Type in name for JDK and select **Install automatically** and version.
