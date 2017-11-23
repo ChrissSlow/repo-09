@@ -1,7 +1,24 @@
-# Setting up a Jenkins-Server and creating a Jenkins-Maven-Pipeline for Tomcat 6.0.53
+# Setting up a Jenkins Server and creating a Jenkins Maven Pipeline for Tomcat
 
-The purpose of this document is to guide you through the installation of a Jenkins-Server and the creation of a Maven Pipeline.
+The purpose of this document is to guide you through the installation of a Jenkins Server and the creation of a Maven Pipeline.
 The Maven Pipeline pulls a repository, which contains a Tomcat-Server vers. 6.0.53, from GitHub.com, builds and tests it's code and finally deploys the created JAR-file to a specified directory.
+
+## Table of Contents
+
+1. [Installing Jenkins](#installing-jenkins)
+2. [Getting started](#getting-started)
+3. [Creating a user](#creating-a-user)
+4. [Configure tools for Maven and JDK](#configure-tools-for-maven-and-jdk)
+   1. [Maven](#maven)
+   2. [JDK](#jdk)
+5. [Configuring GitHub for Jenkins](#configuring-github-for-jenkins)
+6. [Creating a Jenkins Pipeline for Tomcat via Maven](#creating-a-jenkins-pipeline-for-tomcat-via-aven)
+7. [Adding Plugins](#adding-plugins)
+   1. [FindBugs](#findbugs)
+   2. [Checkstyle](#checkstyle)
+   3. [Emma](#emma)
+8. [Creating a Jenkinsfile for Tomcat](#creating-a-jenkinsfile-for-tomcat)
+9. [Building a Jenkins Job](#building-a-jenkins-job)
 
 ## Installing Jenkins
 
@@ -38,7 +55,7 @@ When starting up Jenkins for the first time you will be prompted to enter the in
 2. Paste the password into the field in the web browser
 3. Select plugins to install. Make sure the plugins “Pipeline” and “GitHub” are selected (most of the plugins should already be selected by default)
 
-## Creating A User
+## Creating a user
 
 When first loging in to Jenkins you used the initial password found in jenkins.log. To avoid having to type in the same long password over and over again, everytime you log back in, you should create another user.
 
@@ -68,7 +85,7 @@ In Jenkins:
 
 ---
 
-## Configure Maven-Tool and JDK
+## Configure tools for Maven and JDK
 
 Maven does not come with Jenkins by default. Note that the following steps are not the only solution.
 
@@ -128,7 +145,7 @@ Got to **Manage Jenkins** > **Configure System**
    
 3. Click **Apply** and **Save**
 
-## Creating a Jenkins Pipeline for Tomcat 6.0.53 via Maven
+## Creating a Jenkins Pipeline for Tomcat via Maven
 
 In Jenkins:
 1. Go to **New Item**
@@ -219,7 +236,7 @@ Go to **Manage Jenkins** > **Manage Plugins**
 
 3. You should also download the Plugin [Publishing HTML Reports in Pipeline](https://jenkins.io/blog/2016/07/01/html-publisher-plugin/). With it you can publish the reports Emma generates.
 
-## Creating Jenkinsfile for Tomcat 6.0.53
+## Creating a Jenkinsfile for Tomcat
 
 This is the heart of this exercise. The Jenkinsfile is one way of defining a Jenkins Pipeline. Here you define different stages through which your project will be built, tested and deployed. The Jenkinsfile has to be located in your project’s repository (the root directory should do).
 

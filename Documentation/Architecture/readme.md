@@ -9,20 +9,20 @@
    4. [Host](#host)
    5. [Connector](#connector)
    6. [Context](#context)
-2. [Important packages in org.apache](#important-packages-in-org.apache)
-3. [Important Interfaces and Classes](#important-interfaces-and -classes)
-   1. [Server (org.apache.catalina)](#server-(org.apache.catalina))
-   2. [Service (org.apache.catalina)](#service-(org.apache.catalina))
-   3. [Engine (org.apache.catalina)](#engine-(org.apache.catalina))
-   4. [Host (org.apache.catalina.core)](#host-(org.apache.catalina.core))
-   5. [Connector (org.apache.connector)](#connector-(org.apache.connector))
-   6. [Context (org.apache.catalina)](#context-(org.apache.catalina))
-   7. [Wrapper (org.apache.catalina.core)](#wrapper-(org.apache.catalina.core))
-   8. [container-(org.apache.catalina)](#container-(org.apache.catalina))
-   9. [Realm (org.apache.catalina)](#realm-(org.apache.catalina))
-   10. [Pipeline (org.apache.catalina)](#pipeline-(org.apache.catalina))
-   11. [Valve (org.apache.catalina)](#valve-(org.apache.catalina))
-   12. [Lifecycle (org.apache.catalina)](#lifecycle-(org.apache.catalina))
+2. [Important packages](#important-packages)
+3. [Important Interfaces and Classes](#important-interfaces-and-classes)
+   1. [Server Interface](#server-interface)
+   2. [Service Interface](#service-interface)
+   3. [Engine Interface](#engine-interface)
+   4. [Host Interface](#host-interface)
+   5. [Connector Interface](#connector-interface)
+   6. [Context Interface](#context-interface)
+   7. [Wrapper Interface](#wrapper-interface)
+   8. [container Interface](#container-interface)
+   9. [Realm Class](#realm-class)
+   10. [Pipeline Classs](#pipeline-class)
+   11. [Valve Class](#valve-class)
+   12. [Lifecycle Class](#lifecycle-class)
 4. [Generated package structure](#generated-package-structure)
 5. [Architecture Overview](#architecture-overview)
 6. [Processing a Request](#processing-a-request)
@@ -35,21 +35,24 @@
 
 ## Rough Architecture
 
+---
+
 ![Rough Architecture](./images/architecture_03.png)
 
+---
 
-#### Server:
+### Server:
 - Server Container
 - Can have one or more services
 
-#### Service:
+### Service:
 - Lives inside a server
 - Ties one or more connectors to one engine
 - Belongs to one server
 - Can have one or more connectors
 - Can have one Engine
 
-#### Engine:
+### Engine:
 - Processes requests for it’s services
 - Receives and processes requests taken from the connectors
 - Creates responses and handles them back to the connectors
@@ -57,55 +60,63 @@
 - Can have one or more hosts
 - Has one or more connectors
 
-#### Host:
+### Host:
 - Association of network name (hs-mannheim.de) to Tomcat server
 - Belongs to one engine
 - Can have one or more contexts
 
-#### Connector:
+### Connector:
 - Handles communications with clients
 - HTTP-Connector for HTTP-traffic
 - AJP-Connector to connect to e.g. HTTPD
 - Belongs to one service
 - Belongs to one engine
 
-#### Context:
+### Context:
 - Unique web application with unique path
 - Belongs to one host
 
 
-## Important packages in org.apache
+## Important packages
+
+In this section all important features for 
 
 
-#### catalina
+### catalina
 - Contains fundamental packages of the Tomcat server
 - Subpackage “core” contains all the important interfaces and classes that make out the
 
-#### server’s structure
+### server’s structure
 - Subpackage “connector” contains classes that implement the Connector interface
 
-#### coyote
+### coyote
 - Contains important components for the HTTP1-connector
    - Listens for TCP connections and forwards requests to Tomcat’s JSP-Engine
 
-#### jk
+### jk
 - Contains components for Tomcat’s JK-connector
   - Allows Tomcat to connect to a Webserver like IIS via jk protocol
 
-#### jasper
+### jasper
 - Contains the components of Tomcat’s JSP-Engine
 
 
 ## Important Interfaces and Classes
 
 
-#### Server (org.apache.catalina):
+### Server Interface:
+
+**Included in org.apache.catalina**
+
 - Interface
 - Represents the Tomcat server
 - Implementing class:
   - StandardServer (org.apache.catalina.core)
 
-#### Service (org.apache.catalina):
+### Service Interface:
+
+**Included in org.apache.catalina**
+
 - Interface
 - Group of connectors that share a container (engine) for request processing
 - Implementing class:
@@ -117,7 +128,10 @@
   - Catalina (org.apache.catalina.startup)
     - Startup/Shutdown shell program for Catalina servlet
 
-#### Engine (org.apache.catalina):
+### Engine Interface:
+
+**Included in org.apache.catalina**
+
 - Interface
 - Useful for these scenarios:
   - Use of interceptors to see every single request processes
@@ -127,7 +141,10 @@
 - Container
   - Child-container is host-implementation
 
-#### Host (org.apache.catalina.core):
+### Host Interface:
+
+**Included in org.apache.catalina.core**
+
 - Virtual host in Catalina servlet engine
 - Implementing classes:
   - StandardHost
@@ -135,10 +152,16 @@
   - Parent-container is engine-implementation
   - Child-container is context-implementation
 
-#### Connector (org.apache.connector):
+### Connector Interface:
+
+**Included in org.apache.connector**
+
 - Coyote connector
 
-#### Context (org.apache.catalina):
+### Context Interface:
+
+**Included in org.apache.catalina**
+
 - A web application in Catalina servlet engine
 - Use of interceptor to see all requests for a context possible
 - Implementing classes:
@@ -153,7 +176,10 @@ Webserver like Apache because the connector then utilizes the webserver’s faci
 proper context for processing the request.**
 
 
-#### Wrapper (org.apache.catalina.core):
+### Wrapper Interfaces:
+
+**Included in org.apache.catalina.core**
+
 - Individual servlet definition
 - Interceptor to see requests for servlets
 - Manages servlet life cycle for underlying class (e.g. init() and destroy())
@@ -162,7 +188,10 @@ proper context for processing the request.**
 - Implementing classes:
   - StandardWrapper (org.apache.catalina.core)
 
-#### Container (org.apache.catalina):
+### Container Interface:
+
+**Included in org.apache.catalina**
+
 - Interface
 - Executes requests and creates/returns a response. Alternative: support pipeline of valves for processing
 - Possible containers:
@@ -174,20 +203,32 @@ proper context for processing the request.**
   - ContainerBase (org.apache.catalina.core)
     - “Standard”-classes extend this class to get common functionalities
 
-#### Realm (org.apache.catalina):
+### Realm:
+
+**Included in org.apache.catalina**
+
 - Read-only facade for security realm
 - Authenticate users and their security roles
 - Attached at any container level (mostly context or higher)
 
-#### Pipeline (org.apache.catalina):
+### Pipeline:
+
+**Included in org.apache.catalina**
+
 - Collection of valves to be executed in order when invoke() is called
 - A valve must process a request and create a proper responses
 - One pipeline for each Container
 
-#### Valve (org.apache.catalina):
+### Valve:
+
+**Included in org.apache.catalina**
+
 - Request-processing component associated with its container
 
-#### Lifecycle (org.apache.catalina):
+### Lifecycle:
+
+**Included in org.apache.catalina**
+
 - Interface for component lifecycle methods
 - Not mandatory for Catalina components
 - Provides consistent mechanism to start and shutdown component
@@ -196,7 +237,12 @@ proper context for processing the request.**
 ![Packages Overview](./images/architecture_01.png)
 
 ## Architecture Overview
+
+---
+
 ![Architecture Overview](./images/architecture_02.png)
+
+---
 
 **NOTE: Blue packages are important**
 
@@ -615,8 +661,14 @@ org.apache.tomcat.util.buf.CharChunk.getLength()
 org.apache.catalina.core.ApplicationFilterChain.release()
 
 ### Rough request process
+
+---
+
 ![Rough request process](./images/request.png)
 
+---
+
 ## Misc
+
 [Server Startup](./files/serverStartup.pdf)
 [Request Process](./files/requestProcess.pdf)
