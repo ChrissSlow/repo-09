@@ -46,7 +46,7 @@ pipeline {
 					
 					// Run Emma for OwnProgram
 					sh 'cd OwnProgram && mvn emma:emma'
-					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'OwnProgram/target/site/emma', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report', reportTitles: ''])
+					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: '', reportFiles: '', reportName: '', reportTitles: ''])
 				}
 			}
         }
