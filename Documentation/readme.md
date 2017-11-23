@@ -1,5 +1,5 @@
 # [Architecture](./Architecture)
-The documentation of the architecture of tomcat
+The documentation of the architecture of Tomcat 6.0.53
 
-# [HTTPRequest](./HTTPRequest)
-The documentation of an http request
+# [Jenkins](./Jenkins)
+Instructions on how to install Jekins and create a Maven-Pipeline for Tomcat 6.0.53

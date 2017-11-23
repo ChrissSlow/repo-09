@@ -45,14 +45,20 @@ When first loging in to Jenkins you used the initial password found in jenkins.l
 In Jenkins:
 1. Go to **Manage Jenkins** > **Manage Users**
 
+---
+
 ![Manage Jenkins](./images/01_manage_jenkins.png)
 
 ---
 
 ![Manage Users](./images/02_manage_users.png)
 
+---
+
 2. Fill in the input fields
 3. Click **Create User**
+
+---
 
 ![Create User](./images/03_create_user.png)
 
@@ -69,21 +75,31 @@ Maven does not come with Jenkins by default. Note that the following steps are n
 In Jenkins:
 Got to **Manage Jenkins** > **Global Tool Configuration**
 
+---
+
 ![Configure Tool](./images/05_tool_configuration.png)
+
+---
 
 **Maven**
    1. Scroll down to the section for Maven
    2. Click **Add Maven**
    3. Type in name for Maven tool and select **Install automatically** and version.
    4. Click **Apply** and **Save**
+
+---
    
 ![Maven](./images/07_maven_tool.png)
+
+---
    
 **JDK**
    1. Scroll down to the section for JDK
    2. Click **Add JDK**
    3. Type in name for JDK and select **Install automatically** and version.
    4. Click **Apply** and **Save**
+
+---
    
 ![JDK](./images/06_jdk_tool.png)
    
@@ -94,13 +110,21 @@ Got to **Manage Jenkins** > **Global Tool Configuration**
 In Jenkins:
 Got to **Manage Jenkins** > **Configure System**
 
+---
+
 ![Configure System](./images/10_configure_system.png)
+
+---
 
 1. Scroll down to section **GitHub** and click **Add GitHub Server**
 2. Enter a Name and add credentials
    1. Make sure to set **Kind** to **Secret Text**. Here you should paste a token, which you can generate [here](https://github.com/settings/tokens), into the field “Secret”
+
+---
    
 ![GitHub Server](./images/09_configure_github.png)
+
+---
    
 3. Click **Apply** and **Save**
 
@@ -109,23 +133,43 @@ Got to **Manage Jenkins** > **Configure System**
 In Jenkins:
 1. Go to **New Item**
 
+---
+
 ![New Item](./images/11_new_item.png)
+
+---
 
 2. Click on **Pipeline**, enter a pipeline name and click **OK**
 
+---
+
 ![Pipeline Selection](./images/12_select_pipeline.png)
+
+---
 
 3. Enter a Description and set the maximum amount of builds, which should be kept. This should be done if you don't want your memory fill up very fast.
 
+---
+
 ![Pipeline Description and Maximum Build Amount](./images/13_description_name.png)
+
+---
 
 4. Check the box for **GitHub Project**, enter URL for the repository. Under Build Triggers check **GitHub hook trigger for GITScm polling** and **Poll SCM** and enter "*/5 * * * *" in the text-area for the schedule
 
+---
+
 ![GitHub Poll](./images/14_github_poll.png)
+
+---
 
 5. Under **Pipeline** chose the definition **Pipeline script from SCM** and make sure **SCM** is set to **Git**. Enter the URL for the repository and specify the branch.
 
+---
+
 ![Pipeline Configuration](./images/15_pipeline_config.png)
+
+---
 
 6. Click **Apply** and **Save**
 
@@ -151,15 +195,27 @@ This is what the official [Website](http://emma.sourceforge.net/) for Emma says:
 
 Go to **Manage Jenkins** > **Manage Plugins**
 
+---
+
 ![Manage Plugins](./images/16_manage_plugins.png)
+
+---
 
 1. Click on the Tab for available Plugins and type in the names of the Three plugins: [FindBugs Plug-in](https://wiki.jenkins.io/display/JENKINS/FindBugs+Plugin), [Checkstyle Plug-in](https://wiki.jenkins.io/display/JENKINS/Checkstyle+Plugin) and [Emma plugin](https://wiki.jenkins.io/display/JENKINS/Emma+Plugin). Select the checkboxes for the plugins and click **Download now and install after restart**.
 
+---
+
 ![Manage Plugins](./images/17_search_plugins.png)
+
+---
 
 2. **In the Tomcat sourcefolder:** add the following plugins inside the tags for reports:
 
+---
+
 ![Adding Plugins](./images/18_add_plugins.png)
+
+---
 
 3. You should also download the Plugin [Publishing HTML Reports in Pipeline](https://jenkins.io/blog/2016/07/01/html-publisher-plugin/). With it you can publish the reports Emma generates.
 
@@ -171,7 +227,11 @@ In the GitHub-Repository:
 1. Create Jenkinsfile
 2. Use the following structure:
 
+---
+
 ![Jenkinsfile](./images/19_jenkinsfile.png)
+
+---
 
 “pipeline” - All valid Declarative Pipelines must be enclosed within a “pipeline” block.
 
@@ -195,6 +255,8 @@ The last stage is for deploying the created JAR-File to a specific location. In 
 
 If the Jenkins Job was configured correctly you should be able to witness the first build. You can monitor the success of your builds on the dashboard (starting page) or by clicking on the builds you would like to have a closer look at them.
 Besides the status of the different stages you can see the results from FindBugs, Checkstyle and Emma.
+
+---
 
 ![Dashboard](./images/20_dashboard.png)
 
