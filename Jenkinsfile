@@ -43,11 +43,6 @@ pipeline {
 					// Run Emma for Tomcat
                     sh 'cd Tomcat && mvn emma:emma'
 					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'Tomcat/target/site/emma/', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report for Tomcat', reportTitles: ''])
-					
-					// Run Emma for OwnProgram
-					sh 'cd OwnProgram && mvn pom.xml site'
-					sh 'cd OwnProgram && mvn emma:emma'
-					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'OwnProgram/target/site/emma/', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report for OwnProgram', reportTitles: ''])
 				}
 			}
         }
