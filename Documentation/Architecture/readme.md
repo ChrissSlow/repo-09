@@ -2,7 +2,36 @@
 
 ## Table of Contents
 
-[Rough Architecture](#rough-architecture)
+1. [Rough Architecture](#rough-architecture)
+   1. [Server](#server)
+   2. [Service](#service)
+   3. [Engine](#engine)
+   4. [Host](#host)
+   5. [Connector](#connector)
+   6. [Context](#context)
+2. [Important packages in org.apache](#important-packages-in-org.apache)
+3. [Important Interfaces and Classes](#important-interfaces-and -classes)
+   1. [Server (org.apache.catalina)](#server-(org.apache.catalina))
+   2. [Service (org.apache.catalina)](#service-(org.apache.catalina))
+   3. [Engine (org.apache.catalina)](#engine-(org.apache.catalina))
+   4. [Host (org.apache.catalina.core)](#host-(org.apache.catalina.core))
+   5. [Connector (org.apache.connector)](#connector-(org.apache.connector))
+   6. [Context (org.apache.catalina)](#context-(org.apache.catalina))
+   7. [Wrapper (org.apache.catalina.core)](#wrapper-(org.apache.catalina.core))
+   8. [container-(org.apache.catalina)](#container-(org.apache.catalina))
+   9. [Realm (org.apache.catalina)](#realm-(org.apache.catalina))
+   10. [Pipeline (org.apache.catalina)](#pipeline-(org.apache.catalina))
+   11. [Valve (org.apache.catalina)](#valve-(org.apache.catalina))
+   12. [Lifecycle (org.apache.catalina)](#lifecycle-(org.apache.catalina))
+4. [Generated package structure](#generated-package-structure)
+5. [Architecture Overview](#architecture-overview)
+6. [Processing a Request](#processing-a-request)
+   1. [Extracting classes involved in one http call](#extracting-classes-involved-in-one-http-call)
+   2. [Extracting packages involved in one http call](#extracting-packages-involved-in-one-http-call)
+   3. [Function calls sorted by package](#function-calls-sorted-by-package)
+   4. [Function calls sorted by amount of calls in a descending order](#function-calls-sorted-by-amount-of-calls-in-a-descending-order)
+   5. [Rough Request process](#rough-request-process)
+7. [Misc](#misc)
 
 ## Rough Architecture
 
@@ -413,7 +442,7 @@ org.apache.tomcat.util.http.mapper.Mapper.nthSlash(org.apache.tomcat.util.buf.Ch
 org.apache.tomcat.util.http.mapper.MappingData.recycle()
 org.apache.tomcat.util.http.MimeHeaders.createHeader()
 
-### Function calls sorted by amount of calls (descending)
+### Function calls sorted by amount of calls in a descending order
 ```shell
 grep "^" cpu-live.csv | sed -E "s;^\"([^\"]*).*;\1;g"
 ```
