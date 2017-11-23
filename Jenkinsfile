@@ -50,14 +50,11 @@ pipeline {
 			steps {
 				// Running FindBugs
 				sh 'cd Tomcat && mvn findbugs:findbugs'					
-				
 				// Running Checkstyle
 				sh 'cd Tomcat && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"' 				
-			}
-			steps{
+				
 				// Running FindBugs
 				sh 'cd OwnProgram && mvn findbugs:findbugs'					
-				
 				// Running Checkstyle
 				sh 'cd OwnProgram && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"' 	
 			}
