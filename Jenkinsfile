@@ -49,7 +49,7 @@ pipeline {
 		stage('Reports') {                         
 			steps {
 				// Running FindBugs
-				sh 'cd OwnProgram && mvn findbugs:findbugs'					
+				sh 'cd Tomcat && mvn findbugs:findbugs'					
 				
 				// Running Checkstyle
 				sh 'cd Tomcat && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"' 				
