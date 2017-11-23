@@ -175,19 +175,19 @@ In Jenkins:
 
 ## Adding Plugins for FindBugs, Checkstyle and Emma
 
-#### What is FindBugs?
+### What is FindBugs?
 
 This is what Wikipedia has to say about FindBugs ([Website](http://findbugs.sourceforge.net/)):
 
 >"FindBugs is an open source static code analyser created by Bill Pugh and David Hovemeyer which detects possible bugs in Java programs. The analyzer got itself a successor: SpotBugs. Potential errors are classified in four ranks: (i) scariest, (ii) scary, (iii) troubling and (iv) of concern. "[[Wikipedia](https://en.wikipedia.org/wiki/FindBugs), 22.11.2017 10:14 PM]
 
-#### What is Checkstyle?
+### What is Checkstyle?
 
 This is what the official [Website](http://checkstyle.sourceforge.net/) for Checkstyle says:
 
 >"Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. It automates the process of checking Java code to spare humans of this boring (but important) task. This makes it ideal for projects that want to enforce a coding standard."[[Checkstyle.sourceforge.net](http://checkstyle.sourceforge.net/), 22.11.2017 10:07 PM, Section "Overview"]
 
-#### What is Emma?
+### What is Emma?
 
 This is what the official [Website](http://emma.sourceforge.net/) for Emma says:
 
