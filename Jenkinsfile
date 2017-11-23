@@ -56,12 +56,12 @@ pipeline {
 				// Running FindBugs
 				sh 'cd OwnProgram && mvn findbugs:findbugs'					
 				// Running Checkstyle
-				sh 'cd OwnProgram && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"' 	
+				sh 'cd OwnProgram && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/OwnProgram/checkstyle.xml"' 	
 			}
 			post{
 				success{
 					findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '**/findbugsXml.xml', unHealthy: ''
-					checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: '**/checkstyle.xml', unHealthy: ''	
+					checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''	
 				}
 			}
 		}
