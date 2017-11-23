@@ -254,7 +254,7 @@ The last stage is for deploying the created JAR-File to a specific location. In 
 ## Building a Jenkins Job
 
 If the Jenkins Job was configured correctly you should be able to witness the first build. You can monitor the success of your builds on the dashboard (starting page) or by clicking on the builds you would like to have a closer look at them.
-Besides the status of the different stages you can see the results from FindBugs, Checkstyle and Emma.
+Besides the status of the different stages you can see the results from FindBugs, Checkstyle and Emma in the form diagrams or separate pages.
 
 ---
 
@@ -262,8 +262,8 @@ Besides the status of the different stages you can see the results from FindBugs
 
 ---
 
-![Pipeline Diagrams](./images/.png)
+![Pipeline Diagrams](./images/21_Diagrams.png)
 
 ---
 
-![Pipeline Stages](./images/.png)
+![Pipeline Stages](./images/22_Build_Status.png)
