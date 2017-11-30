@@ -211,7 +211,12 @@ proper context for processing the request.**
 - Provides consistent mechanism to start and shutdown component
 
 ## Generated package structure
+
+---
+
 ![Packages Overview](./images/architecture_01.png)
+
+---
 
 ## Architecture Overview
 
