@@ -39,8 +39,6 @@ pipeline {
 				sh 'cd Tomcat && mvn test -Dtest=TomcatBaseTest'
 				sh 'cd Tomcat && mvn test -Dtest=TestConnector'
 				sh 'cd Tomcat && mvn test -Dtest=LoggingBaseTest'
-				
-				junit 'Tomcat/target/surefire-reports/*.xml'
 			}
 			post {
 				always{
