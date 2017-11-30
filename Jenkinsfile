@@ -34,11 +34,15 @@ pipeline {
             steps {
 				catchError{
 					// Smoke Tests for Tomcat
-					sh 'cd Tomcat && mvn test -Dtest=TestApplicationContext'
-					sh 'cd Tomcat && mvn test -Dtest=TestApplicationHttpRequest'
-					sh 'cd Tomcat && mvn test -Dtest=TestTomcat'
-					sh 'cd Tomcat && mvn test -Dtest=TestConnector'
-					sh 'cd Tomcat && mvn test -Dtest=LoggingBaseTest'
+				 sh 'cd Tomcat && mvn test -Dtest=TestConnector'
+				 sh 'cd Tomcat && mvn test -Dtest=TestApplicationHttpRequest'
+				 sh 'cd Tomcat && mvn test -Dtest=TestSerializablePrincipal'
+				 sh 'cd Tomcat && mvn test -Dtest=TestTomcat'
+				 sh 'cd Tomcat && mvn test -Dtest=TestGroupChannelStartStop'
+				 sh 'cd Tomcat && mvn test -Dtest=TestRemoteIpValve'
+				 sh 'cd Tomcat && mvn test -Dtest=TestELArithmetic'
+				 sh 'cd Tomcat && mvn test -Dtest=TestAttributeParser'
+				 sh 'cd Tomcat && mvn test -Dtest=TestDateFormatCache'
 				}
 			}
 			post {
