@@ -15,8 +15,8 @@ pipeline {
 				// Compiling and building Tomcat
 				sh 'cd Tomcat && mvn clean compile assembly:single'
 				
-				// Compiling and building OwnProgram
-				sh 'cd OwnProgram && mvn clean compile assembly:single'
+				/*// Compiling and building OwnProgram
+				sh 'cd OwnProgram && mvn clean compile assembly:single'*/
             }
 			post {
                 success {
@@ -72,8 +72,8 @@ pipeline {
 			steps{
 				
 				// Deploying Tomcat
-				sh 'cp -r Tomcat/conf/** /var/lib/jenkins/conf'
-				sh 'cp -r Tomcat/webapps/** /var/lib/jenkins/webapps'
+				sh 'cp -r Tomcat/conf/ /var/lib/jenkins/conf'
+				sh 'cp -r Tomcat/webapps/ /var/lib/jenkins/webapps'
 				sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar /var/lib/jenkins/TomcatJars'
 
 				// Deploying OwnProgram
