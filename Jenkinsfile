@@ -15,8 +15,8 @@ pipeline {
 				// Compiling and building Tomcat
 				sh 'cd Tomcat && mvn clean compile assembly:single'
 				
-				/*// Compiling and building OwnProgram
-				sh 'cd OwnProgram && mvn clean compile assembly:single'*/
+				// Compiling and building OwnProgram
+				sh 'cd OwnProgram && mvn clean compile assembly:single'
             }
 			post {
                 success {
@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        /*stage('Test'){
+        stage('Test'){
             steps {
 				catchError{
 					// Smoke Tests for Tomcat
@@ -67,7 +67,7 @@ pipeline {
 					checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''	
 				}
 			}
-		}*/
+		}
         stage('Deploy') {
 			steps{
 				
