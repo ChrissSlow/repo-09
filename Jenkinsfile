@@ -18,7 +18,7 @@ pipeline {
 				
 				// Compiling and building OwnProgram
 				sh 'cd OwnProgram && mvn clean compile'		
-				sh 'cd OwnProgram && mvn assembly:single'
+				sh 'cd OwnProgram && mvn compile assembly:single'
             }
 			post {
                 success {
@@ -35,7 +35,6 @@ pipeline {
 				catchError{
 					// Smoke Tests for Tomcat
 				 sh 'cd Tomcat && mvn test -Dtest=TestConnector'
-				 sh 'cd Tomcat && mvn test -Dtest=TestApplicationHttpRequest'
 				 sh 'cd Tomcat && mvn test -Dtest=TestSerializablePrincipal'
 				 sh 'cd Tomcat && mvn test -Dtest=TestTomcat'
 				 sh 'cd Tomcat && mvn test -Dtest=TestGroupChannelStartStop'
@@ -62,16 +61,11 @@ pipeline {
 				// Running FindBugs
 				sh 'cd Tomcat && mvn findbugs:findbugs'					
 				// Running Checkstyle
-				sh 'cd Tomcat && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"' 				
-				
-				// Running FindBugs
-				sh 'cd OwnProgram && mvn findbugs:findbugs'					
-				// Running Checkstyle
-				sh 'cd OwnProgram && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/OwnProgram/checkstyle.xml"' 	
+				sh 'cd Tomcat && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/Tomcat/checkstyle.xml"' 					
 			}
 			post{
 				success{
-					findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '**/findbugsXml.xml', unHealthy: ''
+					findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'Tomcat/target/findbugsXml.xml', unHealthy: ''
 					checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''	
 				}
 			}
