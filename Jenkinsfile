@@ -71,6 +71,7 @@ pipeline {
         stage('Deploy') {
 			steps{
 				// Deploying Tomcat
+				sh 'cp -r Tomcat/conf/ /var/lib/jenkins/conf'
 				sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar /var/lib/jenkins/TomcatJars'
 
 				// Deploying OwnProgram
