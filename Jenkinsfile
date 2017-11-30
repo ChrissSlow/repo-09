@@ -38,11 +38,9 @@ pipeline {
 				sh 'cd Tomcat && mvn test -Dtest=TestTomcat'
 				sh 'cd Tomcat && mvn test -Dtest=TomcatBaseTest'
 				sh 'cd Tomcat && mvn test -Dtest=TestConnector'
-				sh 'cd Tomcat && mvn test -Dtest=TesterPrincipal'
-				sh 'cd Tomcat && mvn test -Dtest=TestRemoteIpValve'
-				sh 'cd Tomcat && mvn test -Dtest=TestELArithmetic'
-				sh 'cd Tomcat && mvn test -Dtest=TestAttributeParser'
-				sh 'cd Tomcat && mvn test -Dtest=TestDateFormatCache'
+				sh 'cd Tomcat && mvn test -Dtest=LoggingBaseTest'
+				
+				junit 'Tomcat/target/surefire-reports/*.xml'
 			}
 			post {
 				always{
@@ -51,10 +49,6 @@ pipeline {
 					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'Tomcat/target/site/emma/', reportFiles: 'index.html', reportName: 'Emma Code Coverage Report for Tomcat', reportTitles: ''])
 				}
            		success {
-					// Testing Tomcat
-					//sh 'cd Tomcat && mvn test'
-					junit 'Tomcat/target/surefire-reports/*.xml'
-					
 					// Testing OwnProgram
 					sh 'cd OwnProgram && mvn test'
 				}
