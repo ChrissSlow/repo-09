@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Test'){
             steps {
-				catchError {
+				catchError{
 					// Smoke Tests for Tomcat
 					sh 'cd Tomcat && mvn test -Dtest=TestApplicationContext'
 					sh 'cd Tomcat && mvn test -Dtest=TestApplicationHttpRequest'
