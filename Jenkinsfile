@@ -37,7 +37,6 @@ pipeline {
 					sh 'cd Tomcat && mvn test -Dtest=TestApplicationContext'
 					sh 'cd Tomcat && mvn test -Dtest=TestApplicationHttpRequest'
 					sh 'cd Tomcat && mvn test -Dtest=TestTomcat'
-					sh 'cd Tomcat && mvn test -Dtest=TomcatBaseTest'
 					sh 'cd Tomcat && mvn test -Dtest=TestConnector'
 					sh 'cd Tomcat && mvn test -Dtest=LoggingBaseTest'
 				}
