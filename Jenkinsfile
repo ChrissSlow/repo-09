@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage('Test'){
+        /*stage('Test'){
             steps {
 				catchError{
 					// Smoke Tests for Tomcat
@@ -67,11 +67,13 @@ pipeline {
 					checkstyle canRunOnFailed: true, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''	
 				}
 			}
-		}
+		}*/
         stage('Deploy') {
 			steps{
+				
 				// Deploying Tomcat
-				sh 'cp -r Tomcat/conf/ /var/lib/jenkins/conf'
+				sh 'cp -r Tomcat/conf/** /var/lib/jenkins/conf'
+				sh 'cp -r Tomcat/webapps/** /var/lib/jenkins/webapps'
 				sh 'cp Tomcat/target/lsd-app-1.0-SNAPSHOT-jar-with-dependencies.jar /var/lib/jenkins/TomcatJars'
 
 				// Deploying OwnProgram
