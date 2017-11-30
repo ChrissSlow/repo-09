@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Test'){
             steps {
-				// Smoke Tests
+				// Smoke Tests for Tomcat
 				sh 'cd Tomcat && mvn test -Dtest=TestApplicationContext'
 				sh 'cd Tomcat && mvn test -Dtest=TestApplicationHttpRequest'
 				sh 'cd Tomcat && mvn test -Dtest=TestTomcat'
@@ -52,7 +52,7 @@ pipeline {
 				}
            		success {
 					// Testing Tomcat
-					sh 'cd Tomcat && mvn test'
+					//sh 'cd Tomcat && mvn test'
 					junit 'Tomcat/target/surefire-reports/*.xml'
 					
 					// Testing OwnProgram
