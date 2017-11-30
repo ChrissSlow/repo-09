@@ -13,12 +13,10 @@ pipeline {
         stage('Build') { 
             steps {
 				// Compiling and building Tomcat
-				sh 'cd Tomcat && mvn clean compile'		
-				sh 'cd Tomcat && mvn compile assembly:single'
+				sh 'cd Tomcat && mvn clean compile assembly:single'
 				
 				// Compiling and building OwnProgram
-				sh 'cd OwnProgram && mvn clean compile'		
-				sh 'cd OwnProgram && mvn compile assembly:single'
+				sh 'cd OwnProgram && mvn clean compile assembly:single'
             }
 			post {
                 success {
