@@ -85,7 +85,7 @@ pipeline {
     post {
         success {
             // Restart to remount
-            sh 'sudo -u root docker restart tomcat_container'
+            sh 'docker restart tomcat_container'
         }
     }
 }
