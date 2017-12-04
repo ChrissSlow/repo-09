@@ -85,7 +85,7 @@ pipeline {
   post {
     success {
       // Restart to remount
-      sh 'whoami'      		 
+      sh 'docker restart tomcat_container'      		 
     }
   } 
 
