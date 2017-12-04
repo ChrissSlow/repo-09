@@ -89,5 +89,17 @@ pipeline {
         }
     }
 
+<<<<<<< HEAD
 
 }
+=======
+  post {
+    success {
+      // Restart to remount
+      sh 'docker restart tomcat_container'      		 
+    }
+  } 
+
+
+}
+>>>>>>> master
