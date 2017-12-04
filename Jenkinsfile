@@ -81,4 +81,13 @@ pipeline {
 			}
 		}
     }
+
+  post {
+    success {
+      // Restart to remount
+      sh 'docker restart tomcat_container'      		 
+    }
+  } 
+
+
 }
